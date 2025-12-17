@@ -1,0 +1,121 @@
+/* فایل استایل عمومی */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    direction: rtl; /* برای زبان فارسی */
+    line-height: 1.6;
+}
+
+/* کانتینر اصلی فرم‌ها و صفحات */
+.wrapper {
+    width: 350px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.wrapper h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* گروه‌بندی فرم‌ها */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* استایل اینپوت‌ها */
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* برای محاسبه درست عرض */
+}
+
+/* پیام‌های خطا */
+.help-block {
+    color: #dc3545;
+    font-size: 0.9em;
+}
+
+/* دکمه‌ها */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+/* هدر صفحه محصولات */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* کانتینر محصولات */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* چیدمان گرید واکنش‌گرا */
+    gap: 20px;
+}
+
+/* کارت هر محصول */
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+.product-card .price {
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 15px;
+}
