@@ -23,7 +23,7 @@ CREATE TABLE `users` (
 -- رمز عبور: admin123
 --
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'Admin User', 'admin@example.com', '$2y$10$aevA79behFPkEA5/z9Q/Te2XTv73lm6wgwSm7labY4wOYLdUeMP9O', 'admin');
+(1, 'Admin User', 'admin@gmail.com', '$2y$10$aevA79behFPkEA5/z9Q/Te2XTv73lm6wgwSm7labY4wOYLdUeMP9O', 'admin');
 
 
 -- --------------------------------------------------------
