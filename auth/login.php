@@ -18,23 +18,21 @@ $email_err = $password_err = "";
 // بررسی می‌کنیم که آیا فرم ارسال شده است یا نه
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // اعتبارسنجی ایمیل
     if (empty(trim($_POST["email"]))) {
         $email_err = "لطفا ایمیل خود را وارد کنید.";
     } else {
         $email = trim($_POST["email"]);
     }
 
-    // اعتبارسنجی رمز عبور
     if (empty(trim($_POST["password"]))) {
         $password_err = "لطفا رمز عبور خود را وارد کنید.";
     } else {
         $password = trim($_POST["password"]);
     }
 
-    // اگر خطایی وجود نداشت، اطلاعات را با دیتابیس چک می‌کنیم
     if (empty($email_err) && empty($password_err)) {
-        $sql = "SELECT id, name, email, password FROM users WHERE email = ?";
+        // ستون role را نیز انتخاب می‌کنیم
+        $sql = "SELECT id, name, email, password, role FROM users WHERE email = ?";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
             mysqli_stmt_bind_param($stmt, "s", $param_email);
@@ -44,16 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mysqli_stmt_store_result($stmt);
 
                 if (mysqli_stmt_num_rows($stmt) == 1) {
-                    mysqli_stmt_bind_result($stmt, $id, $name, $email, $hashed_password);
+                    // role را نیز bind می‌کنیم
+                    mysqli_stmt_bind_result($stmt, $id, $name, $email, $hashed_password, $role);
                     if (mysqli_stmt_fetch($stmt)) {
                         if (password_verify($password, $hashed_password)) {
-                            // رمز عبور صحیح است، session جدید را شروع می‌کنیم
-                            // session_start() قبلا در بالای صفحه فراخوانی شده است
-
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["name"] = $name;
                             $_SESSION["email"] = $email;
+                            $_SESSION["role"] = $role; // ذخیره نقش کاربر در session
 
                             header("location: ../products/index.php");
                             exit;
